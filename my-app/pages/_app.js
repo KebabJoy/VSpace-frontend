@@ -1,12 +1,12 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { MenuBar } from '../components/MenuBar/MenuBar';
+import { Header } from '../components/Header/Header';
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <MenuBar />
+        <Header />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `;
 
 const theme = {
@@ -38,7 +43,7 @@ const theme = {
     primary: '#0a2896',
     secondary: '#00aaff',
     secondaryInverse: '#b6c1dd',
-    background: '#f3f7fa',
+    background: '#f5f3fa',
     white: '#fff',
     black: '#2f3441',
   },

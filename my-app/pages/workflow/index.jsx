@@ -8,7 +8,7 @@ const Workflow = () => {
   return (
     <div>
       <Head>
-        <title>Workflow page</title>
+        <title>VSpace - Рабочая Среда</title>
         <meta name="description" content="Workflow page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
