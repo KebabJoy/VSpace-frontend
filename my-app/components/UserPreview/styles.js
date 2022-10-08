@@ -21,14 +21,17 @@ export const Number = styled.span`
 export const Image = styled.img`
   width: 24px;
   height: 24px;
-  border-radius: ${(props) => props.theme.borderRadius.l};
+  border-radius: 4px;
+  // border-radius: ${(props) => props.theme.borderRadius.l};
 `;
 
 export const ImageEmpty = styled.div`
   width: 24px;
   height: 24px;
-  border-radius: ${(props) => props.theme.borderRadius.l};
-  background: ${(props) => (!props.src ? props.theme.colors.background : null)};
+  background: #d9d9d9;
+  border-radius: 4px;
+  // border-radius: ${(props) => props.theme.borderRadius.l};
+  // background: ${(props) => (!props.src ? props.theme.colors.background : null)};
 `;
 
 export const Username = styled.span`

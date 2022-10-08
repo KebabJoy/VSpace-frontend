@@ -1,13 +1,9 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import styled from 'styled-components';
-import styles from '../styles/Main.module.css';
-import { MediaContainer } from '../components/common/MediaContainer';
 import { MainSection } from '../components/MainPageComponents/MainSection/MainSection';
 import { CourseSection } from '../components/MainPageComponents/CourseSection/CourseSection';
 import { HowItSection } from '../components/MainPageComponents/HowItSection/HowItSection';
-import { Button } from '../components/common/Button';
-import { UserPreview } from '../components/UserPreview/UserPreview';
+import { InfoHowItSection } from '../components/MainPageComponents/InfoHowItSection/InfoHowItSection';
+import { ActivitySection } from '../components/MainPageComponents/ActivitySection/ActivitySection';
 
 const Home = () => {
   return (
@@ -24,31 +20,13 @@ const Home = () => {
         <CourseSection />
 
         <HowItSection />
-        {/* <StyledSectionInverse></StyledSectionInverse> */}
 
-        {/* <Button width={160}>Test</Button>
-        <UserPreview number={5} img={''} username={'Timur Salikhov'} /> */}
-        {/* <StyledSection></StyledSection> */}
+        <InfoHowItSection />
+
+        <ActivitySection />
       </main>
-
-      {/* <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
     </>
   );
 };
 
 export default Home;
-
-// const StyledSectionInverse = styled(StyledSection)`
-//   background: ${({ theme }) => theme.colors.white};
-// `;
