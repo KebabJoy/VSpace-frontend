@@ -26,12 +26,3 @@ export const StyledDiv = styled.div`
   gap: 24px;
   width: min-content;
 `;
-
-export const StyledImg = styled.img`
-  width: 24px;
-  height: 24px;
-  filter: ${({ primary }) =>
-    primary
-      ? 'invert(13%) sepia(63%) saturate(4366%) hue-rotate(223deg) brightness(86%) contrast(99%)'
-      : ''};
-`;

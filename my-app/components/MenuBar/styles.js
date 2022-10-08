@@ -2,15 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 48px;
   height: 64px;
   font-size: 18px;
   line-height: 22px;
+  color: ${(props) => props.theme.colors.white};
+  flex-grow: 2;
+  max-width: 650px;
 `;
 
 export const StyledA = styled.a`
-  color: ${({ primary, theme }) => (primary ? theme.colors.white : theme.colors.secondaryInverse)};
+  // color: ${({ primary, theme }) =>
+    primary ? theme.colors.white : theme.colors.secondaryInverse};
   cursor: pointer;
 `;
 

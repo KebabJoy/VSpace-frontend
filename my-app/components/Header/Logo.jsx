@@ -19,6 +19,6 @@ export const Logo = () => {
 };
 
 const StyledImage = styled(Image)`
-  flex: 0 1 96px;
+  flex-grow: 1;
   cursor: pointer;
 `;
