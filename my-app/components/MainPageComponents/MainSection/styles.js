@@ -31,7 +31,7 @@ export const Container = styled.section`
     content: '';
     background: linear-gradient(180deg, #5865f2 0%, rgba(88, 101, 242, 0) 100%), #0a2896;
     position: absolute;
-    top: 0;
+    top: 64px;
     left: 0;
     width: 100%;
     height: 600px;

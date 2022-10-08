@@ -24,4 +24,5 @@ const Container = styled.div`
   padding: 12px 48px;
   height: 64px;
   background-color: ${(props) => props.theme.colors.secondary};
+  border-bottom: 1px solid ${(props) => props.theme.colors.white};
 `;

@@ -29,9 +29,9 @@ export const InfoP = styled.h2`
 `;
 
 export const InfoBox = styled.div`
+  padding: 36px 48px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   flex-grow: 1;
-  padding: 36px 48px;
 `;

@@ -5,6 +5,7 @@ import styles from '../styles/Main.module.css';
 import { MediaContainer } from '../components/common/MediaContainer';
 import { MainSection } from '../components/MainPageComponents/MainSection/MainSection';
 import { CourseSection } from '../components/MainPageComponents/CourseSection/CourseSection';
+import { HowItSection } from '../components/MainPageComponents/HowItSection/HowItSection';
 import { Button } from '../components/common/Button';
 import { UserPreview } from '../components/UserPreview/UserPreview';
 
@@ -19,12 +20,14 @@ const Home = () => {
 
       <main>
         <MainSection />
-        <Button width={160}>Test</Button>
-        <UserPreview number={5} img={''} username={'Timur Salikhov'} />
 
         <CourseSection />
+
+        <HowItSection />
         {/* <StyledSectionInverse></StyledSectionInverse> */}
 
+        {/* <Button width={160}>Test</Button>
+        <UserPreview number={5} img={''} username={'Timur Salikhov'} /> */}
         {/* <StyledSection></StyledSection> */}
       </main>
 
