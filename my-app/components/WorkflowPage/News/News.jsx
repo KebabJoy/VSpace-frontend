@@ -4,7 +4,7 @@ import { Container } from './style';
 export const News = () => {
   return (
     <MediaContainer>
-      <Container>Большая новость</Container>;
+      <Container>Большая новость</Container>
     </MediaContainer>
   );
 };

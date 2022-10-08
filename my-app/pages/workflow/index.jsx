@@ -7,8 +7,8 @@ import { News } from '../../components/WorkflowPage/News/News';
 import { FameDesk } from '../../components/WorkflowPage/FameDesk/FameDesk';
 import { WorkflowBlock } from '../../components/WorkflowPage/WorkflowBlock/WorkflowBlock';
 import { Activities } from '../../components/WorkflowPage/Activities/Activities';
-import { Container } from './styles';
 import { MediaContainer } from '../../components/common/MediaContainer';
+import styled from 'styled-components';
 
 const Workflow = () => {
   return (
@@ -53,5 +53,10 @@ const Workflow = () => {
     </Container>
   );
 };
+
+const Container = styled.div`
+  padding-top: 110px;
+  background-color ${(props) => props.theme.colors.background};
+`;
 
 export default Workflow;
