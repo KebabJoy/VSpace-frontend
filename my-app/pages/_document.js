@@ -33,7 +33,8 @@ export default class MyDocument extends Document {
       <Html lang="ru">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+            // href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap"
             rel="stylesheet"
           />
         </Head>

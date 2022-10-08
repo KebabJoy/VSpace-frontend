@@ -1,8 +1,11 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import chevronImg from '../../../assets/profilePage/chevron-down.svg';
+import getUser from '../../../services/getUser';
+import getUserHistory from '../../../services/getUserHistory';
+import { API_URL } from '../../../utils/constants';
 import { MediaContainer } from '../../common/MediaContainer';
 import { Counter } from './Counter';
 import { Notification } from './Notification';
@@ -18,10 +21,28 @@ const TriggerTitle = styled.div`
   gap: 14px;
 `;
 
-export const AccordionComponent = () => {
+const historyPath = API_URL + '/clients/balance_history?auth_token=';
+
+export const AccordionComponent = ({ user }) => {
+  const [history, setHistory] = useState(null);
+  console.log(history);
+
+  useEffect(() => {
+    getUserHistory('', user.auth_token, user.id).then((result) => {
+      console.log('history result', result);
+      if (!result || !result.success) {
+        return;
+      }
+
+      setHistory(result.history);
+    });
+  }, []);
+
+  const handleChange = (value) => {};
+
   return (
     <MediaContainer>
-      <StyledAccordion type="single" defaultValue="item-1" collapsible>
+      <StyledAccordion type="single" defaultValue="item-1" collapsible onValueChange={handleChange}>
         <StyledItem value="item-1">
           <AccordionTrigger>
             <TriggerTitleContainer>
@@ -35,7 +56,7 @@ export const AccordionComponent = () => {
             <Notification count={27} />
           </AccordionTrigger>
 
-          <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+          <AccordionContent>Коллеги будут здесь</AccordionContent>
         </StyledItem>
 
         <StyledItem value="item-2">
@@ -52,25 +73,34 @@ export const AccordionComponent = () => {
           </AccordionTrigger>
 
           <AccordionContent>
-            Yes. its unstyled by default, giving you freedom over the look and feel.
+            {user.nft_balance.map((item, id) => (
+              <div key={id}>{item}</div>
+            ))}
           </AccordionContent>
         </StyledItem>
 
-        <StyledItem value="item-3">
+        <StyledItem value="history">
           <AccordionTrigger>
             <TriggerTitleContainer>
-              <Counter count={42} />
+              <Counter count={history ? history.length : 0} />
               <TriggerTitle>
                 <StyledChevron src={chevronImg.src} aria-hidden />
                 История активностей
               </TriggerTitle>
             </TriggerTitleContainer>
 
-            <Notification count={14} />
+            <Notification count={history ? Math.floor(history.length / 2) : null} />
           </AccordionTrigger>
 
           <AccordionContent>
-            Yes! You can animate the Accordion with CSS or JavaScript.
+            {history &&
+              history.map(({ id, amount, currency, from_client, to_client }, idx) => {
+                return (
+                  <div key={id}>
+                    {idx + 1}. Сумма {amount} {currency} от {from_client} к {to_client}
+                  </div>
+                );
+              })}
           </AccordionContent>
         </StyledItem>
       </StyledAccordion>
@@ -112,7 +142,9 @@ const StyledItem = styled(AccordionPrimitive.Item)`
   padding: 0px 24px;
   min-height: 60px;
   background: #ffffff;
+  border: 1px solid #fff;
   border-radius: 14px;
+  cursor: pointer;
 
   &:first-child {
     margin-top: 0px;
@@ -121,7 +153,9 @@ const StyledItem = styled(AccordionPrimitive.Item)`
   &:focus-within {
     position: relative;
     z-index: 1;
-    box-shadow: 0 0 0 2px #000;
+    // box-shadow: 0 0 0 2px #000;
+    // background-color: ${({ theme }) => theme.colors.secondaryInverse};
+    border-color: ${({ theme }) => theme.colors.secondaryInverse};
   }
 `;
 
@@ -152,12 +186,14 @@ const StyledTrigger = styled(AccordionPrimitive.Trigger)`
   // box-shadow: 0 1px 0 #000;
   // '&[data-state="closed"]': { backgroundColor: 'white' },
   // &[data-state="open"] { background-color: red },
-  // '&:hover': { backgroundColor: mauve.mauve2 },
+  // &:hover {
+  //   background-color: red;
+  // }
 `;
 const StyledContent = styled(AccordionPrimitive.Content)`
   overflow: hidden;
   font-size: 15px;
-  color: purple;
+  // color: purple;
   // background-color: green;
 
   &[data-state='open'] {
@@ -173,7 +209,6 @@ const StyledContentText = styled.div`
 `;
 
 const StyledChevron = styled.img`
-  color: red;
   transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
   [data-state='open'] & {
     transform: rotate(180deg);

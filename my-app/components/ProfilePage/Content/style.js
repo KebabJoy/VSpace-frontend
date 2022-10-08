@@ -101,15 +101,29 @@ export const UserImage = styled.div`
   width: 96px;
   height: 96px;
   border-radius: 4px;
+  background: ${(props) => props.theme.colors.background};
 `;
 
 export const UserName = styled.div`
+  position: relative;
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
   color: #23272a;
-  margin-bottom: 8px;
-  margin-top: 24px;
+  margin: 8px 0;
+
+  &::after {
+    content: '${(props) => props.rank}';
+    position: absolute;
+    top: 50%;
+    right: calc(-12px);
+    transform: translate(100%, -50%);
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5865f2;
+  }
 `;
 
 export const UserLevel = styled.div`
@@ -117,6 +131,22 @@ export const UserLevel = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: #5865f2;
+`;
+
+export const UserPosition = styled.p`
+  margin: 8px 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #23272a;
+`;
+
+export const UserCity = styled.p`
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #23272a;
 `;
 
 export const UserBioTitle = styled.div`
@@ -136,7 +166,7 @@ export const UserBio = styled.div`
 
 export const UserRole = styled.div`
   position: absolute;
-  top: 44px;
+  top: 24px;
   right: 24px;
   padding: 12px 16px;
 

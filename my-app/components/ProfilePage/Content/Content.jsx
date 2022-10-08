@@ -15,10 +15,12 @@ import {
   UserBio,
   UserBioTitle,
   UserCard,
+  UserCity,
   UserImage,
   UserImageContainer,
   UserLevel,
   UserName,
+  UserPosition,
   UserRangCard,
   UserRole,
 } from './style';
@@ -55,14 +57,16 @@ export const Content = ({ user }) => {
           <UserImageContainer>
             <UserImage></UserImage>
             <div>
-              <UserName>
+              <UserName rank={user.rank}>
                 {user.first_name} {user.last_name}
               </UserName>
-              <UserLevel>{user.rank_number} уровень</UserLevel>
+              <UserPosition>{user.position}</UserPosition>
+              <UserCity>г. {user.city}</UserCity>
+              {/* <UserLevel>{user.rank_number} уровень</UserLevel> */}
             </div>
           </UserImageContainer>
 
-          <UserRole>{user.position}</UserRole>
+          <UserRole>{user.team}</UserRole>
 
           <UserBioTitle>Био</UserBioTitle>
 

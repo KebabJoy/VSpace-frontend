@@ -42,7 +42,7 @@ const Profile = () => {
 
       <Content user={user.user} />
 
-      <AccordionComponent />
+      <AccordionComponent user={user.user} />
       {/* <Friends /> */}
 
       {/* <Collection /> */}
