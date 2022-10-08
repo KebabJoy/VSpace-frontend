@@ -1,13 +1,13 @@
 import { API_URL } from '../utils/constants';
 
-const loginUser = async (user) => {
-  const response = await fetch(API_URL + '/clients/sign_in', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(user),
-  });
+const path = API_URL + '/clients?auth_token=';
+
+const getUser = async (api, token) => {
+  if (!token) {
+    return;
+  }
+
+  const response = await fetch(api || path + token);
 
   if (response.status === 200) {
     const result = await response.json();
@@ -19,4 +19,4 @@ const loginUser = async (user) => {
   }
 };
 
-export default loginUser;
+export default getUser;

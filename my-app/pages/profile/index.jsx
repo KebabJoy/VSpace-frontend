@@ -5,14 +5,32 @@ import { Content } from '../../components/ProfilePage/Content/Content';
 // import useUser from '../../hooks/useUser_';
 // import styles from '../styles/Home.module.css'
 import useSWR from 'swr';
-import { API_URL, fetcher } from '../../utils/constants';
+import { API_URL, fetcher, ROUTES } from '../../utils/constants';
 import { AccordionComponent } from '../../components/ProfilePage/Accordion/Accordion';
+import useGetUser from '../../hooks/useGetUser';
+import { useEffect, useState } from 'react';
+import getUser from '../../services/getUser';
+import Router from 'next/router';
 
 const Profile = () => {
-  // const { data, error } = useSWR(API_URL + '/clients/sign_in ', fetcher);
+  const [user, setUser] = useState(null);
 
-  // if (error) return 'An error has occurred.';
-  // if (!data) return 'Loading...';
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+
+    getUser('', token).then((result) => {
+      if (!result || !result.success) {
+        Router.push(ROUTES.LOGIN);
+        return;
+      }
+
+      setUser(result);
+    });
+  }, []);
+
+  if (!user) {
+    return <div>LOADING...</div>;
+  }
 
   return (
     <Container>
@@ -22,7 +40,7 @@ const Profile = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Content />
+      <Content user={user.user} />
 
       <AccordionComponent />
       {/* <Friends /> */}

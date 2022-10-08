@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import loginUser from '../../../services/loginUser';
+import loginUser from '../../services/loginUser';
 // import useUser from '../../../hooks/useUser';
 // import loginUser from '../../../services/loginUser';
-import { API_URL } from '../../../utils/constants';
+import { API_URL, ROUTES } from '../../utils/constants';
 // import useUser from '../../../hooks/useUser';
 // import { Content } from '../../components/ProfilePage/Content/Content';
 // import useUser from '../../hooks/useUser';
@@ -16,10 +16,10 @@ import useSWR from 'swr';
 const Login = () => {
   // const { user } = useUser({ redirectTo: '/profile' });
   // const { user, mutate, loggedOut } = useUser(userData);
-  const { data, mutate, error } = useSWR(
-    [API_URL + '/clients', { user: { email: 'test@mail.ru', password: 'testpass' } }],
-    loginUser
-  );
+  // const { data, mutate, error } = useSWR(
+  //   [API_URL + '/clients', { user: { email: 'test@mail.ru', password: 'testpass' } }],
+  //   loginUser
+  // );
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
@@ -33,20 +33,17 @@ const Login = () => {
   };
 
   const handleClick = async () => {
-    const data = await loginUser(API_URL + '/clients/sign_in', {
-      user: {
-        email: login,
-        password,
-      },
+    const data = await loginUser({
+      email: login,
+      password,
     });
 
     console.log('HANDLECLICK', data);
 
-    // setUserData({
-    //   email: login,
-    //   password,
-    // });
-    // mutate();
+    if (data.success) {
+      localStorage.setItem('auth_token', data.user.auth_token);
+      Router.replace(ROUTES.PROFILE);
+    }
   };
 
   // useEffect(() => {

@@ -11,6 +11,7 @@ export const ROUTES = {
   MARKET: '/market',
   FORUM: '/forum',
   ADMIN: '/admin',
+  LOGIN: '/login',
 };
 
 export const menuBar = [

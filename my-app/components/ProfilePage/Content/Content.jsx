@@ -27,26 +27,27 @@ import roubleImg from '../../../assets/profilePage/rouble.svg';
 import maticImg from '../../../assets/profilePage/matic.svg';
 import cercleImg from '../../../assets/profilePage/cercle.svg';
 import starImg from '../../../assets/profilePage/star.svg';
-import { css } from 'styled-components';
 
-export const Content = ({ title }) => {
+export const Content = ({ user }) => {
   return (
     <MediaContainer>
       <Container>
         <UserRangCard>
           <RangTitleContainer>
-            <img src={starImg.src}></img>
+            <img src={starImg.src} alt="star"></img>
             <RangTitle>Ранг</RangTitle>
           </RangTitleContainer>
 
-          <RangRole>Знаток</RangRole>
+          <RangRole>{user.rank}</RangRole>
 
           <RangLevelCercleContainer>
             <RangLevelCercle src={cercleImg.src} alt="circle"></RangLevelCercle>
-            <RangLevelCercleText>5</RangLevelCercleText>
+            <RangLevelCercleText>{user.rank_number}</RangLevelCercleText>
           </RangLevelCercleContainer>
 
-          <RangExperience>124/360</RangExperience>
+          <RangExperience>
+            {user.experience}/{(user.rank_number + 1) * 50}
+          </RangExperience>
           <RangExpretienceTitle>опыт</RangExpretienceTitle>
         </UserRangCard>
 
@@ -54,19 +55,18 @@ export const Content = ({ title }) => {
           <UserImageContainer>
             <UserImage></UserImage>
             <div>
-              <UserName>Name</UserName>
-              <UserLevel>5 уровень</UserLevel>
+              <UserName>
+                {user.first_name} {user.last_name}
+              </UserName>
+              <UserLevel>{user.rank_number} уровень</UserLevel>
             </div>
           </UserImageContainer>
 
-          <UserRole>role</UserRole>
+          <UserRole>{user.position}</UserRole>
 
           <UserBioTitle>Био</UserBioTitle>
 
-          <UserBio>
-            Обожаю рыбалку с шашлычком под запах дымка, где-нибудь у озерца. Недавно отмечал день
-            огурца. Играю на баяне и аккордеоне. Слушаю группу The Beatles
-          </UserBio>
+          <UserBio>{user.bio}</UserBio>
         </UserCard>
 
         <UserBalance>
@@ -76,12 +76,12 @@ export const Content = ({ title }) => {
           </BalanceTitle>
 
           <BalanceWrapper>
-            <span>24</span>
+            <span>{user.matics}</span>
             <img src={maticImg.src} alt={'matic'}></img>
           </BalanceWrapper>
 
           <BalanceWrapper>
-            <span>1204</span>
+            <span>{user.rubles}</span>
             <img src={roubleImg.src} alt={'rouble'}></img>
           </BalanceWrapper>
         </UserBalance>
