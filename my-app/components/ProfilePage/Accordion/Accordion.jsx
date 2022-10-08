@@ -34,18 +34,41 @@ export const AccordionComponent = () => {
 
             <Notification count={27} />
           </AccordionTrigger>
+
           <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
         </StyledItem>
 
         <StyledItem value="item-2">
-          <AccordionTrigger>Is it unstyled?</AccordionTrigger>
+          <AccordionTrigger>
+            <TriggerTitleContainer>
+              <Counter count={14} />
+              <TriggerTitle>
+                <StyledChevron src={chevronImg.src} aria-hidden />
+                NFT Коллекция
+              </TriggerTitle>
+            </TriggerTitleContainer>
+
+            <Notification count={1} />
+          </AccordionTrigger>
+
           <AccordionContent>
             Yes. its unstyled by default, giving you freedom over the look and feel.
           </AccordionContent>
         </StyledItem>
 
         <StyledItem value="item-3">
-          <AccordionTrigger>Can it be animated?</AccordionTrigger>
+          <AccordionTrigger>
+            <TriggerTitleContainer>
+              <Counter count={42} />
+              <TriggerTitle>
+                <StyledChevron src={chevronImg.src} aria-hidden />
+                История активностей
+              </TriggerTitle>
+            </TriggerTitleContainer>
+
+            <Notification count={14} />
+          </AccordionTrigger>
+
           <AccordionContent>
             Yes! You can animate the Accordion with CSS or JavaScript.
           </AccordionContent>

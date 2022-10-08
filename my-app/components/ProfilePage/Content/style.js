@@ -136,13 +136,18 @@ export const UserBio = styled.div`
 
 export const UserRole = styled.div`
   position: absolute;
-  top: 24px;
+  top: 44px;
   right: 24px;
+  padding: 12px 16px;
 
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-  color: #0a2896;
+  border: 1px solid #b6c1dd;
+  border-radius: 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #23272a;
 `;
 
 //balance

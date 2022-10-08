@@ -31,7 +31,7 @@ const Profile = () => {
   if (!user) {
     return <div>LOADING...</div>;
   }
-
+  console.log(user);
   return (
     <Container>
       <Head>
@@ -55,6 +55,7 @@ const Profile = () => {
 const Container = styled.div`
   padding-top: 60px;
   background-color ${(props) => props.theme.colors.background};
+  min-height: calc(100vh - 64px);
 `;
 
 export default Profile;
