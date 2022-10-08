@@ -6,6 +6,7 @@ import { Content } from '../../components/ProfilePage/Content/Content';
 // import styles from '../styles/Home.module.css'
 import useSWR from 'swr';
 import { API_URL, fetcher } from '../../utils/constants';
+import { AccordionComponent } from '../../components/ProfilePage/Accordion/Accordion';
 
 const Profile = () => {
   // const { data, error } = useSWR(API_URL + '/clients/sign_in ', fetcher);
@@ -23,6 +24,7 @@ const Profile = () => {
 
       <Content />
 
+      <AccordionComponent />
       {/* <Friends /> */}
 
       {/* <Collection /> */}
