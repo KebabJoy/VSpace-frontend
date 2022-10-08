@@ -41,11 +41,11 @@ const GlobalStyle = createGlobalStyle`
 const theme = {
   colors: {
     primary: '#0a2896',
-    secondary: '#00aaff',
+    secondary: '#5865F2',
     secondaryInverse: '#b6c1dd',
     background: '#f5f3fa',
     white: '#fff',
-    black: '#2f3441',
+    black: '#23272a',
   },
   borderRadius: {
     xs: '8px',
