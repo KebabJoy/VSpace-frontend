@@ -23,10 +23,10 @@ import {
   UserRole,
 } from './style';
 import walletImg from '../../../assets/menuBar/wallet_black.svg';
-import roubleImg from '../../../assets/profilePage/rouble.svg';
-import maticImg from '../../../assets/profilePage/matic.svg';
-import cercleImg from '../../../assets/profilePage/cercle.svg';
-import starImg from '../../../assets/profilePage/star.svg';
+import roubleImg from '../../../assets/profilePage/Rouble.svg';
+import maticImg from '../../../assets/profilePage/Matic.svg';
+import cercleImg from '../../../assets/profilePage/Cercle.svg';
+import starImg from '../../../assets/profilePage/Star.svg';
 
 export const Content = ({ user }) => {
   return (
