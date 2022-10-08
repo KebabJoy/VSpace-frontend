@@ -19,7 +19,7 @@ const Workflow = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <News />
+      <News title="Большая новость" />
 
       <FameDesk />
 

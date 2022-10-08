@@ -1,10 +1,10 @@
 import { MediaContainer } from '../../common/MediaContainer';
 import { Container } from './style';
 
-export const News = () => {
+export const News = ({ title }) => {
   return (
     <MediaContainer>
-      <Container>Большая новость</Container>
+      <Container>{title}</Container>
     </MediaContainer>
   );
 };

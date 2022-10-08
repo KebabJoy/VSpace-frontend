@@ -10,6 +10,7 @@ export const Button = styled.button`
   border-radius: ${(props) => props.theme.borderRadius.xs};
   font-size: ${(props) => props.fontSize || '14px'};
   line-height: ${(props) => props.lineHeight || '17px'};
+  font-weight: ${(props) => props.fontWeight || 500};
   cursor: pointer;
   transition: all 0.2s;
 
