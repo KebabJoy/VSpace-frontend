@@ -40,3 +40,6 @@ export const menuBar = [
     img: profileImg,
   },
 ];
+
+export const fetcher = (...args) => fetch(...args).then((res) => res.json());
+export const API_URL = 'https://enigmatic-everglades-80269.herokuapp.com';

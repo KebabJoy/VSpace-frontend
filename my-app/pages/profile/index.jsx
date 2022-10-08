@@ -1,9 +1,18 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { Content } from '../../components/ProfilePage/Content/Content';
+// import useUser from '../../hooks/useUser_';
 // import styles from '../styles/Home.module.css'
+import useSWR from 'swr';
+import { API_URL, fetcher } from '../../utils/constants';
 
 const Profile = () => {
+  // const { data, error } = useSWR(API_URL + '/clients/sign_in ', fetcher);
+
+  // if (error) return 'An error has occurred.';
+  // if (!data) return 'Loading...';
+
   return (
     <Container>
       <Head>
@@ -12,7 +21,13 @@ const Profile = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Profile test</h1>
+      <Content />
+
+      {/* <Friends /> */}
+
+      {/* <Collection /> */}
+
+      {/* <History /> */}
     </Container>
   );
 };

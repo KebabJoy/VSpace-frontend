@@ -3,6 +3,12 @@ import Image from 'next/image';
 // import styles from '../styles/Home.module.css'
 
 const Forum = () => {
+  const handleClick = () => {
+    fetch('https://enigmatic-everglades-80269.herokuapp.com/clients', { mode: 'no-cors' }).then(
+      (res) => console.log(res)
+    );
+  };
+
   return (
     <div>
       <Head>
@@ -12,6 +18,7 @@ const Forum = () => {
       </Head>
 
       <h1>Forum test</h1>
+      <button onClick={handleClick}>CLICK ME</button>
     </div>
   );
 };

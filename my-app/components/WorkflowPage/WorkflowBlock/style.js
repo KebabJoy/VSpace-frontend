@@ -54,6 +54,7 @@ export const SliderContainer = styled.div`
   justify-content: flex-start;
   gap: 18px;
   overflow-x: scroll;
+  margin-bottom: 44px;
 `;
 
 export const Card = styled.div`
