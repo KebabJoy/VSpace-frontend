@@ -13,8 +13,12 @@ import {
 } from './style';
 import sliderControlImg from '../../../assets/V.svg';
 import { MediaContainer } from '../../common/MediaContainer';
+import { SliderControl } from './SliderControl';
+import { useCallback, useRef } from 'react';
 
 export const WorkflowBlock = ({ title, bio, button, filters, background, data }) => {
+  const ref = useRef(null);
+
   return (
     <Container background={background}>
       <MediaContainer>
@@ -23,14 +27,6 @@ export const WorkflowBlock = ({ title, bio, button, filters, background, data })
 
           <BioContainer button={button}>{bio}</BioContainer>
           {button && <Button>{button}</Button>}
-          {/* {button ? (
-            <>
-              <BioContainer>{bio}</BioContainer>
-              <Button>{button}</Button>
-            </>
-          ) : (
-            <BioContainer>{bio}</BioContainer>
-          )} */}
         </TitleContainer>
 
         <FiltersContainer>
@@ -40,7 +36,7 @@ export const WorkflowBlock = ({ title, bio, button, filters, background, data })
         </FiltersContainer>
 
         <SliderWrapper>
-          <SliderContainer>
+          <SliderContainer ref={ref}>
             <Card></Card>
             <Card></Card>
             <Card></Card>
@@ -52,9 +48,7 @@ export const WorkflowBlock = ({ title, bio, button, filters, background, data })
             <Card></Card>
           </SliderContainer>
 
-          <SliderControlContainer>
-            <img src={sliderControlImg.src}></img>
-          </SliderControlContainer>
+          <SliderControl refItem={ref} />
         </SliderWrapper>
       </MediaContainer>
     </Container>
