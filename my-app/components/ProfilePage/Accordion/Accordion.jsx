@@ -96,7 +96,7 @@ export const AccordionComponent = ({ user }) => {
 
           <AccordionContent>
             <NFTContainer>
-              {user.nft_balance.map(({ amount, uri }, id) => (
+              {user.nft_balance.map(({ uri }, id) => (
                 <div key={id}>
                   <img src={uri} alt={'nft'}></img>
                 </div>
