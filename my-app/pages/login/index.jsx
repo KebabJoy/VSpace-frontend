@@ -1,27 +1,13 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Router from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import loginUser from '../../services/loginUser';
-// import useUser from '../../../hooks/useUser';
-// import loginUser from '../../../services/loginUser';
-import { API_URL, ROUTES } from '../../utils/constants';
-// import useUser from '../../../hooks/useUser';
-// import { Content } from '../../components/ProfilePage/Content/Content';
-// import useUser from '../../hooks/useUser';
-// import styles from '../styles/Home.module.css'
-import useSWR from 'swr';
 import loginAdmin from '../../services/loginAdmin';
+import { ROUTES } from '../../utils/constants';
+import { Button } from '../../components/common/Button';
 
 const Login = () => {
-  // const { user } = useUser({ redirectTo: '/profile' });
-  // const { user, mutate, loggedOut } = useUser(userData);
-  // const { data, mutate, error } = useSWR(
-  //   [API_URL + '/clients', { user: { email: 'test@mail.ru', password: 'testpass' } }],
-  //   loginUser
-  // );
-
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,13 +19,13 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleClick = async () => {
+  const handleClick = async (e) => {
+    e.preventDefault();
+
     const data = await loginUser({
       email: login,
       password,
     });
-
-    console.log('HANDLECLICK', data);
 
     if (data.success) {
       localStorage.setItem('auth_token', data.user.auth_token);
@@ -53,19 +39,11 @@ const Login = () => {
       password,
     });
 
-    console.log('HANDLECLICKADMIN', data);
-
     if (data.success) {
       localStorage.setItem('auth_token', data.user.auth_token);
-      Router.replace(ROUTES.PROFILE);
+      Router.replace(ROUTES.ADMIN);
     }
   };
-
-  // useEffect(() => {
-  //   if (user && !loggedOut) {
-  //     Router.replace('/LOGINED');
-  //   }
-  // }, [user, loggedOut]);
 
   return (
     <Container>
@@ -75,10 +53,29 @@ const Login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <input type="email" value={login} onChange={handleChangeLogin}></input>
-      <input type="password" value={password} onChange={handleChangePassword}></input>
-      <button onClick={handleClick}>Логин</button>
-      <button onClick={handleClickAdmin}>Администратор</button>
+      <Form onSubmit={handleClick}>
+        <Title>Авторизация</Title>
+
+        <StyledInput
+          type="email"
+          value={login}
+          placeholder={'Введите логин'}
+          onChange={handleChangeLogin}
+        ></StyledInput>
+
+        <StyledInput
+          type="password"
+          value={password}
+          placeholder={'Введите пароль'}
+          onChange={handleChangePassword}
+        ></StyledInput>
+
+        <Button type="submit" fontSize="14px" lineHeight="17px" width={140} onClick={handleClick}>
+          Продолжить
+        </Button>
+
+        <Button onClick={handleClickAdmin}>Войти как Администратор</Button>
+      </Form>
     </Container>
   );
 };
@@ -86,6 +83,40 @@ const Login = () => {
 const Container = styled.div`
   padding-top: 60px;
   background-color ${(props) => props.theme.colors.background};
+  min-height: calc(100vh - 64px);
+`;
+
+const Form = styled.form`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 36px 48px 48px;
+  width: 440px;
+  min-height: 330px;
+  background: #ffffff;
+  border-radius: 14px;
+  gap: 24px;
+`;
+
+const Title = styled.h2`
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  color: #5865f2;
+  margin: 0;
+`;
+
+const StyledInput = styled.input`
+  all: unset;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  width: 344px;
+  height: 43px;
+  background: #f5f3fa;
+  border-radius: 14px;
 `;
 
 export default Login;

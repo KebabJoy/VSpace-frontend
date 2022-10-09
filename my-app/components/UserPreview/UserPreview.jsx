@@ -33,9 +33,9 @@ export const UserPreview = ({ number, img, username, score, callback }) => {
 
           {isOpen && (
             <Popup>
-              <Currency />
+              <Currency>{`₽`}</Currency>
 
-              <StyledInput type="number" ref={inputRef} />
+              <StyledInput type="number" ref={inputRef} autoFocus value={50} />
 
               <StyledButton onClick={handleCallback}>
                 <Icon src={arrowImg.src}></Icon>
@@ -60,6 +60,15 @@ const StyledButton = styled.button`
 `;
 
 const Currency = styled.div`
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #b6c1dd;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 35px;
   height: 33px;
   border: 1px solid #b6c1dd;
