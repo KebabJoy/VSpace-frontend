@@ -25,9 +25,13 @@ export const CardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 24px 18px 36px;
-  border: 1px solid ${(props) => props.theme.colors.secondaryInverse};
-  border-radius: ${(props) => props.theme.borderRadius.s};
+  // border: 1px solid ${(props) => props.theme.colors.secondaryInverse};
+  // border-radius: ${(props) => props.theme.borderRadius.s};
   min-height: 400px;
+
+  background: #ffffff;
+  border: 1px solid #b6c1dd;
+  border-radius: 14px;
 `;
 
 export const CardTitle = styled.div`

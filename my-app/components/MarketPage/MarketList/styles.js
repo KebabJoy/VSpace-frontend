@@ -42,8 +42,46 @@ export const MarketCardsContainer = styled.div`
 `;
 
 export const MarketCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  padding: 24px 16px;
   width: 248px;
   height: 344px;
   border: 1px solid ${(props) => props.theme.colors.secondaryInverse};
   border-radius: ${(props) => props.theme.borderRadius.s};
 `;
+
+export const MarketCardImg = styled.img`
+  width: 216px;
+  height: 193px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+`;
+export const MarketCardTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #5865f2;
+
+  margin-bottom: 12px;
+`;
+export const MarketCardTitle = styled.div``;
+export const MarketCardPrice = styled.div`
+  font-weight: 900;
+`;
+{
+  /* <MarketCardImg src={image_url} alt={title}></MarketCardImg>
+
+<MarketCardTitleContainer>
+  <MarketCardTitle>{title}</MarketCardTitle>
+  <MarketCardPrice>
+    {price} {currency}
+  </MarketCardPrice>
+</MarketCardTitleContainer> */
+}

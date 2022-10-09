@@ -44,3 +44,22 @@ export const menuBar = [
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 export const API_URL = 'https://enigmatic-everglades-80269.herokuapp.com';
+
+export const FILTERS = [
+  {
+    title: 'Всё',
+    value: '',
+  },
+  {
+    title: 'Одежда',
+    value: 'clothes',
+  },
+  {
+    title: 'Канцелярия',
+    value: 'tools',
+  },
+  {
+    title: 'Другое',
+    value: 'other',
+  },
+];

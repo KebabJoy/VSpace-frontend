@@ -3,10 +3,12 @@ import { forwardRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import chevronImg from '../../../assets/profilePage/chevron-down.svg';
+import getColleagues from '../../../services/getColleagues';
 import getUser from '../../../services/getUser';
 import getUserHistory from '../../../services/getUserHistory';
 import { API_URL } from '../../../utils/constants';
 import { MediaContainer } from '../../common/MediaContainer';
+import { UserPreview } from '../../UserPreview/UserPreview';
 import { Counter } from './Counter';
 import { Notification } from './Notification';
 
@@ -21,20 +23,24 @@ const TriggerTitle = styled.div`
   gap: 14px;
 `;
 
-const historyPath = API_URL + '/clients/balance_history?auth_token=';
-
 export const AccordionComponent = ({ user }) => {
   const [history, setHistory] = useState(null);
-  console.log(history);
+  const [colleagues, setColleagues] = useState(null);
 
   useEffect(() => {
     getUserHistory('', user.auth_token, user.id).then((result) => {
-      console.log('history result', result);
+      if (!result || !result.success) {
+        return;
+      }
+      setHistory(result.history);
+    });
+
+    getColleagues('', user.auth_token, user.id).then((result) => {
       if (!result || !result.success) {
         return;
       }
 
-      setHistory(result.history);
+      setColleagues(result.colleagues);
     });
   }, []);
 
@@ -46,36 +52,56 @@ export const AccordionComponent = ({ user }) => {
         <StyledItem value="item-1">
           <AccordionTrigger>
             <TriggerTitleContainer>
-              <Counter count={5} />
+              <Counter count={colleagues ? colleagues.length : 0} />
               <TriggerTitle>
                 <StyledChevron src={chevronImg.src} aria-hidden />
                 Коллеги
               </TriggerTitle>
             </TriggerTitleContainer>
 
-            <Notification count={27} />
+            <Notification count={colleagues ? Math.round(history.length * 0.2) : null} />
           </AccordionTrigger>
 
-          <AccordionContent>Коллеги будут здесь</AccordionContent>
+          <AccordionContent>
+            <Grid>
+              {colleagues ? (
+                colleagues.map(({ id, first_name, last_name }) => {
+                  return (
+                    <UserPreview
+                      key={id}
+                      username={first_name + ' ' + last_name}
+                      callback={() => {}}
+                    />
+                  );
+                })
+              ) : (
+                <div>Loading...</div>
+              )}
+            </Grid>
+          </AccordionContent>
         </StyledItem>
 
         <StyledItem value="item-2">
           <AccordionTrigger>
             <TriggerTitleContainer>
-              <Counter count={14} />
+              <Counter count={user.nft_balance.length} />
               <TriggerTitle>
                 <StyledChevron src={chevronImg.src} aria-hidden />
                 NFT Коллекция
               </TriggerTitle>
             </TriggerTitleContainer>
 
-            <Notification count={1} />
+            <Notification count={Math.floor(user.nft_balance.length || 0 / 2)} />
           </AccordionTrigger>
 
           <AccordionContent>
-            {user.nft_balance.map((item, id) => (
-              <div key={id}>{item}</div>
-            ))}
+            <NFTContainer>
+              {user.nft_balance.map(({ amount, uri }, id) => (
+                <div key={id}>
+                  <img src={uri} alt={'nft'}></img>
+                </div>
+              ))}
+            </NFTContainer>
           </AccordionContent>
         </StyledItem>
 
@@ -107,6 +133,18 @@ export const AccordionComponent = ({ user }) => {
     </MediaContainer>
   );
 };
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px 24px;
+  padding-bottom: 10px;
+`;
+
+const NFTContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 const slideDown = keyframes`
   from {

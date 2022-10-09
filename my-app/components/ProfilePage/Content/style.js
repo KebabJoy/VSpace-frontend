@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const UserRangCard = styled.div`
   padding: 24px;
   width: 124px;
-  min-height: 264px;
+  min-height: 289px;
   background: #ffffff;
   border-radius: 14px;
   flex: 1 0 124px;
@@ -76,12 +76,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 264px;
+  min-height: 289px;
   margin-bottom: 48px;
 `;
 
 export const UserCard = styled.div`
-  min-height: 264px;
+  min-height: 289px;
   background-color: ${(props) => props.theme.colors.white};
   background: #ffffff;
   border-radius: 14px;
@@ -162,6 +162,7 @@ export const UserBio = styled.div`
   font-size: 14px;
   line-height: 22px;
   color: #23272a;
+  margin-bottom: 24px;
 `;
 
 export const UserRole = styled.div`
@@ -184,7 +185,7 @@ export const UserRole = styled.div`
 export const UserBalance = styled.div`
   flex: 1 0 155px;
   width: 155px;
-  height: 264px;
+  height: 289px;
   background-color: ${(props) => props.theme.colors.white};
   background: #ffffff;
   border-radius: 14px;

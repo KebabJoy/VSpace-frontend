@@ -43,17 +43,13 @@ const Profile = () => {
       <Content user={user.user} />
 
       <AccordionComponent user={user.user} />
-      {/* <Friends /> */}
-
-      {/* <Collection /> */}
-
-      {/* <History /> */}
     </Container>
   );
 };
 
 const Container = styled.div`
   padding-top: 60px;
+  padding-bottom: 10px;
   background-color ${(props) => props.theme.colors.background};
   min-height: calc(100vh - 64px);
 `;

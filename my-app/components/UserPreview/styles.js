@@ -37,3 +37,8 @@ export const ImageEmpty = styled.div`
 export const Username = styled.span`
   color: ${(props) => props.theme.colors.primary};
 `;
+
+export const Score = styled.span`
+  margin-left: auto;
+  color: ${(props) => props.theme.colors.primary};
+`;

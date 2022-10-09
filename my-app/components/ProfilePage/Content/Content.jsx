@@ -29,6 +29,7 @@ import roubleImg from '../../../assets/profilePage/Rouble.svg';
 import maticImg from '../../../assets/profilePage/Matic.svg';
 import cercleImg from '../../../assets/profilePage/Cercle.svg';
 import starImg from '../../../assets/profilePage/Star.svg';
+import { SociaLinks } from '../SocialLinks/SociaLinks';
 
 export const Content = ({ user }) => {
   return (
@@ -71,6 +72,8 @@ export const Content = ({ user }) => {
           <UserBioTitle>Био</UserBioTitle>
 
           <UserBio>{user.bio}</UserBio>
+
+          <SociaLinks />
         </UserCard>
 
         <UserBalance>

@@ -1,7 +1,7 @@
-import { Container, Image, ImageEmpty, Number, Username } from './styles';
+import { Container, Image, ImageEmpty, Number, Score, Username } from './styles';
 import appleImg from '../../assets/apple.svg';
 
-export const UserPreview = ({ number, img, username, callback }) => {
+export const UserPreview = ({ number, img, username, score, callback }) => {
   return (
     <Container>
       {number && <Number>{number}</Number>}
@@ -10,7 +10,8 @@ export const UserPreview = ({ number, img, username, callback }) => {
 
       <Username>{username}</Username>
 
-      {/* {callback && <AppleButton onClick={callback} />} */}
+      <Score>{score}</Score>
+
       {callback && <img src={appleImg.src} onClick={callback} />}
     </Container>
   );
