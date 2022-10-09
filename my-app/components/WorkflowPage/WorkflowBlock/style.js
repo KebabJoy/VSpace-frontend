@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   padding-bottom: 48px;
   background-color: ${(props) => (props.background ? props.background : props.theme.colors.white)};
+  padding-top: ${(props) => (props.paddingTop ? props.paddingTop : null)};
 `;
 export const TitleContainer = styled.div`
   display: flex;

@@ -16,11 +16,11 @@ import { MediaContainer } from '../../common/MediaContainer';
 import { SliderControl } from './SliderControl';
 import { useCallback, useRef } from 'react';
 
-export const WorkflowBlock = ({ title, bio, button, filters, background, data }) => {
+export const WorkflowBlock = ({ title, bio, button, filters, background, data, paddingTop }) => {
   const ref = useRef(null);
 
   return (
-    <Container background={background}>
+    <Container background={background} paddingTop={paddingTop}>
       <MediaContainer>
         <TitleContainer>
           <Title>{title}</Title>

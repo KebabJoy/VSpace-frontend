@@ -35,7 +35,7 @@ export const UserPreview = ({ number, img, username, score, callback }) => {
             <Popup>
               <Currency>{`₽`}</Currency>
 
-              <StyledInput type="number" ref={inputRef} autoFocus value={50} />
+              <StyledInput type="number" ref={inputRef} autoFocus placeholder="50" />
 
               <StyledButton onClick={handleCallback}>
                 <Icon src={arrowImg.src}></Icon>

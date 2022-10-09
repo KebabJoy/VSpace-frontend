@@ -56,7 +56,8 @@ export const Content = ({ user }) => {
 
         <UserCard>
           <UserImageContainer>
-            <UserImage></UserImage>
+            <img src={user.avatar_url}></img>
+
             <div>
               <UserName rank={user.rank}>
                 {user.first_name} {user.last_name}
