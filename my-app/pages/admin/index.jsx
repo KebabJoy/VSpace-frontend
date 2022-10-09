@@ -33,7 +33,7 @@ const Admin = () => {
       if (!result || !result.success) {
         return;
       }
-      console.log('TEAMS ', result);
+
       setFilters(result.teams);
     });
   }, []);
@@ -45,11 +45,15 @@ const Admin = () => {
       if (!result || !result.success) {
         return;
       }
-      console.log('ADMIN ', result);
+
       setUsers(result.clients);
       setCurrentUsers(result.clients);
     });
   }, [currentFilter]);
+
+  if (!filters || !users) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container>

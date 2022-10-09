@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import loginUser from '../../services/loginUser';
 import loginAdmin from '../../services/loginAdmin';
-import { ROUTES } from '../../utils/constants';
+import { menuBar, ROUTES } from '../../utils/constants';
 import { Button } from '../../components/common/Button';
 
 const Login = () => {
@@ -41,6 +41,10 @@ const Login = () => {
 
     if (data.success) {
       localStorage.setItem('auth_token', data.user.auth_token);
+      menuBar.push({
+        title: 'админ',
+        route: ROUTES.ADMIN,
+      });
       Router.replace(ROUTES.ADMIN);
     }
   };

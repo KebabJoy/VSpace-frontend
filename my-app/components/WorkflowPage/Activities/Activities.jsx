@@ -10,11 +10,11 @@ export const Activities = () => {
 
       <Container>
         <Card>Курсы</Card>
-        <Card>Курсы</Card>
-        <Card>Курсы</Card>
-        <Card>Курсы</Card>
-        <Card>Курсы</Card>
-        <Card>Курсы</Card>
+        <Card>Марафоны</Card>
+        <Card>Игры</Card>
+        <Card>Викторины</Card>
+        <Card>Лекции</Card>
+        <Card>Open Talks</Card>
       </Container>
     </MediaContainer>
   );
