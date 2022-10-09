@@ -36,6 +36,11 @@ export const menuBar = [
     img: forumImg,
   },
   {
+    title: 'админ',
+    route: ROUTES.ADMIN,
+    img: forumImg,
+  },
+  {
     title: 'профиль',
     route: ROUTES.PROFILE,
     img: profileImg,

@@ -1,15 +1,13 @@
 import { API_URL } from '../utils/constants';
 
-const path = API_URL + '/clients?auth_token=';
-// const path = API_URL + '/clients';
+const path = API_URL + '/teams?auth_token=';
 
-const getUser = async (api, token) => {
+const getTeams = async (token) => {
   if (!token) {
     return;
   }
 
-  // const response = await fetch(api || path);
-  const response = await fetch(api || path + token);
+  const response = await fetch(path + token);
 
   if (response.status === 200) {
     const result = await response.json();
@@ -21,4 +19,4 @@ const getUser = async (api, token) => {
   }
 };
 
-export default getUser;
+export default getTeams;

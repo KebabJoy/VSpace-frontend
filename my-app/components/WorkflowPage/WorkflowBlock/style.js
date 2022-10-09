@@ -40,6 +40,10 @@ export const FiltersContainer = styled.div`
   gap: 12px;
   border-top: 1px solid ${(props) => props.theme.colors.secondaryInverse};
   overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 `;
 
 export const SliderWrapper = styled.div`
@@ -55,6 +59,10 @@ export const SliderContainer = styled.div`
   gap: 18px;
   overflow-x: scroll;
   margin-bottom: 44px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 `;
 
 export const Card = styled.div`

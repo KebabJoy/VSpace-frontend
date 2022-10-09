@@ -12,6 +12,7 @@ import { API_URL, ROUTES } from '../../utils/constants';
 // import useUser from '../../hooks/useUser';
 // import styles from '../styles/Home.module.css'
 import useSWR from 'swr';
+import loginAdmin from '../../services/loginAdmin';
 
 const Login = () => {
   // const { user } = useUser({ redirectTo: '/profile' });
@@ -46,6 +47,20 @@ const Login = () => {
     }
   };
 
+  const handleClickAdmin = async () => {
+    const data = await loginAdmin({
+      email: login,
+      password,
+    });
+
+    console.log('HANDLECLICKADMIN', data);
+
+    if (data.success) {
+      localStorage.setItem('auth_token', data.user.auth_token);
+      Router.replace(ROUTES.PROFILE);
+    }
+  };
+
   // useEffect(() => {
   //   if (user && !loggedOut) {
   //     Router.replace('/LOGINED');
@@ -62,7 +77,8 @@ const Login = () => {
 
       <input type="email" value={login} onChange={handleChangeLogin}></input>
       <input type="password" value={password} onChange={handleChangePassword}></input>
-      <button onClick={handleClick}></button>
+      <button onClick={handleClick}>Логин</button>
+      <button onClick={handleClickAdmin}>Администратор</button>
     </Container>
   );
 };
