@@ -32,6 +32,7 @@ export const AccordionComponent = ({ user }) => {
       if (!result || !result.success) {
         return;
       }
+
       setHistory(result.history);
     });
 

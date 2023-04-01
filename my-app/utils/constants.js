@@ -9,7 +9,7 @@ export const ROUTES = {
   WORKFLOW: '/workflow',
   PROFILE: '/profile',
   MARKET: '/market',
-  FORUM: '/forum',
+  FORUM: '/forums',
   ADMIN: '/admin',
   LOGIN: '/login',
 };
@@ -48,7 +48,7 @@ export const menuBar = [
 ];
 
 export const fetcher = (...args) => fetch(...args).then((res) => res.json());
-export const API_URL = 'https://enigmatic-everglades-80269.herokuapp.com';
+export const API_URL = 'http://localhost:3000';
 
 export const FILTERS = [
   {
