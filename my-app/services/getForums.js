@@ -12,15 +12,13 @@ const buildUrl = (query, token) => {
 };
 
 const getForums = async (token, query = null) => {
-  const response = await fetch(buildUrl(query, token));
-
-  if (response.status === 200) {
+  try {
+    const response = await fetch(buildUrl(query, token));
     return await response.json();
-  } else {
-    const error = new Error('Not correct!');
-    error.status = 403;
-    return error;
+  } catch (e) {
+    return { forums: [] };
   }
+
 };
 
 export default getForums;

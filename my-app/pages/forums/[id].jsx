@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
 import Content from '../../components/PostsPage/Content';
 
 const ForumPage = ({ forumId }) => {
-  return <Content forumId={forumId}></Content>;
+  return <Content forumId={forumId} />;
 };
 
 export async function getServerSideProps(context) {
