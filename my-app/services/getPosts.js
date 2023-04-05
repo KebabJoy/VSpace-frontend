@@ -13,15 +13,13 @@ const buildUrl = (query, token, forum_id) => {
 };
 
 const getPosts = async (token, forum_id, query = null) => {
-  const response = await fetch(buildUrl(query, token, forum_id));
-
-  if (response.status === 200) {
+  try {
+    const response = await fetch(buildUrl(query, token, forum_id));
     return await response.json();
-  } else {
-    const error = new Error('Not correct!');
-    error.status = 403;
-    return error;
+  } catch (e) {
+    return { posts: [] };
   }
+
 };
 
 export default getPosts;

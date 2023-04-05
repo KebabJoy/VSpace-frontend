@@ -1,16 +1,11 @@
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
 import Head from 'next/head';
-import Image from 'next/image';
 import styled from 'styled-components';
 import { Content } from '../../components/ProfilePage/Content/Content';
-// import useUser from '../../hooks/useUser_';
-// import styles from '../styles/Home.module.css'
-import useSWR from 'swr';
-import { API_URL, fetcher, ROUTES } from '../../utils/constants';
+import { ROUTES } from '../../utils/constants';
 import { AccordionComponent } from '../../components/ProfilePage/Accordion/Accordion';
-import useGetUser from '../../hooks/useGetUser';
-import { useEffect, useState } from 'react';
 import getUser from '../../services/getUser';
-import Router from 'next/router';
 
 const Profile = () => {
   const [user, setUser] = useState(null);

@@ -78,10 +78,6 @@ const Content = (forumId) => {
     updatePosts();
   }, [searchTerm]);
 
-  useEffect(() => {
-    updatePosts();
-  }, []);
-
   return (
     <PostSearchContainer>
       <SearchInput

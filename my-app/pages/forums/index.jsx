@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styled from 'styled-components';
-import { useState } from 'react';
 import Content from '../../components/ForumPage/Content';
 
 const Forum = () => {
@@ -11,7 +10,7 @@ const Forum = () => {
         <meta name="description" content="Forum page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Content></Content>
+      <Content />
     </div>
   );
 };
